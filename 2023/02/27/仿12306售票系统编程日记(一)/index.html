@@ -20,18 +20,18 @@
   <title>仿12306售票系统编程日记(一) - Hexo</title>
 
   
-    <meta name="description" content="前言最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.  同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾....  仿12306售票系统编程日记Day01">
+    <meta name="description" content="前言最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目. 同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾…. 仿12306售票系统编程日记Day011230">
 <meta property="og:type" content="article">
 <meta property="og:title" content="仿12306售票系统编程日记(一)">
 <meta property="og:url" content="http://example.com/2023/02/27/%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.  同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾....  仿12306售票系统编程日记Day01">
+<meta property="og:description" content="前言最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目. 同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾…. 仿12306售票系统编程日记Day011230">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205627.png">
 <meta property="og:image" content="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829211814.png">
 <meta property="og:image" content="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829212940.png">
 <meta property="article:published_time" content="2023-02-27T14:59:51.000Z">
-<meta property="article:modified_time" content="2024-08-29T13:34:06.852Z">
+<meta property="article:modified_time" content="2024-08-29T13:37:10.086Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="SpringBoot">
 <meta property="article:tag" content="微服务">
@@ -87,7 +87,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F/">12306售票系统</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-02-27T14:59:51.000Z">2023-02-27</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-29T13:34:06.852Z">2024-08-29</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-02-27T14:59:51.000Z">2023-02-27</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-29T13:37:10.086Z">2024-08-29</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -98,14 +98,15 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><pre><code>最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.
-
-同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾....
-</code></pre>
+  </div><article class="md-text content"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.</p>
+<p>同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾….</p>
 <h1 id="仿12306售票系统编程日记Day01"><a href="#仿12306售票系统编程日记Day01" class="headerlink" title="仿12306售票系统编程日记Day01"></a>仿12306售票系统编程日记Day01</h1><h2 id="12306-模型设计-逻辑实现"><a href="#12306-模型设计-逻辑实现" class="headerlink" title="12306 模型设计&amp;逻辑实现"></a>12306 模型设计&amp;逻辑实现</h2><h3 id="余票查询-记录站-站余票"><a href="#余票查询-记录站-站余票" class="headerlink" title="余票查询 : 记录站-站余票"></a>余票查询 : 记录站-站余票</h3><p>12306 出色的高并发处理性能离不开它的模型设计, 余票查询中如果按照传统的多表查询, 那么面临每秒几十万次的请求时, 答案只有一个, 立马作废.</p>
 <p>余票查询 : 可以理解为是每两个站点之间的票进行销售, 如果购买一张长途的车票, 要做的本质上是n多张两两站点之间的售卖, 将查询变成了单表查询, 极大地提高了查询效率, 而其余余票数量也随某一站点关联增减变化</p>
 <p>看个栗子🌰:</p>
-<p>假设有5个站点, 分别为A, B, C, D, E, 列车行驶的方向是ABCDE, 那么可供购买的余票方案有几种呢, 这是一个小学问题: 4+3+2+1&#x3D;10种, 假设我们从A-&gt;B有10张票, 那么很显然每一种的票数都是10张, 为什么呢? 因为总共就这10个座位, 再多就只能车顶上站着吹风了! 接着, 如果我们对某两个站点之间的票进行了购买, 那么势必要对其他两个站点之间的余票数量减少, 原因是受到了影响, 有的人疑惑, 这是因为两两站点并非两个相邻站点, 明白这点肯定是理解了. 假设我们买走了A-&gt;B的票, 那么首先A-&gt;B对应的余票就应该减少1, 受到影响的A-&gt;C, A-&gt;D, A-&gt;E都会随之减少1, 这又是为什么呢, 这是因为这里的A-&gt;B, A-&gt;C, A-&gt;D, A-&gt;E不是让你提供方案, 而是已经提出的方案, 箭头两端就是两个站点, 不是原本的固定的路线, 可以参考下图理解一下:<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205627.png" alt="20240829205627"><br>这里往后面多画了一点, 多买了一张C-D的票, 那么按照上面的思路确实是这个样子, 但是实际上并没有这么简单, 因为我们刚才所说的10张票之所以有10张票是因为假设在这趟列车上只有10个座位, 那么就会出现第一张票A-&gt;B和第二张C-D的票购买的是否是在一个座位, 如果在同一个位置, 那么此时A-&gt;D和A-&gt;E的余票仍然是9, 这是因为当你购买第一张票的时候, 已经对A-&gt;D和A-&gt;E造成了影响, 当你再对这个座位的第二张C-&gt;D购买时, 不再对其造成影响, 但是同时会对其他的一些情况造成影响, 可以结合图看一下<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829211814.png" alt="20240829211814"><br>通过这张图片我们可以很直观的看出来到底谁受到了影响, 简单来说就是无论座位是否相同, 影响的应该是差集, 这样就可以避免少卖, 因为库存多减少了一嘛</p>
+<p>假设有5个站点, 分别为A, B, C, D, E, 列车行驶的方向是ABCDE, 那么可供购买的余票方案有几种呢, 这是一个小学问题: 4+3+2+1&#x3D;10种, 假设我们从A-&gt;B有10张票, 那么很显然每一种的票数都是10张, 为什么呢? 因为总共就这10个座位, 再多就只能车顶上站着吹风了! 接着, 如果我们对某两个站点之间的票进行了购买, 那么势必要对其他两个站点之间的余票数量减少, 原因是受到了影响, 有的人疑惑, 这是因为两两站点并非两个相邻站点, 明白这点肯定是理解了. 假设我们买走了A-&gt;B的票, 那么首先A-&gt;B对应的余票就应该减少1, 受到影响的A-&gt;C, A-&gt;D, A-&gt;E都会随之减少1, 这又是为什么呢, 这是因为这里的A-&gt;B, A-&gt;C, A-&gt;D, A-&gt;E不是让你提供方案, 而是已经提出的方案, 箭头两端就是两个站点, 不是原本的固定的路线, 可以参考下图理解一下:</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205627.png" alt="20240829205627"></p>
+<p>这里往后面多画了一点, 多买了一张C-D的票, 那么按照上面的思路确实是这个样子, 但是实际上并没有这么简单, 因为我们刚才所说的10张票之所以有10张票是因为假设在这趟列车上只有10个座位, 那么就会出现第一张票A-&gt;B和第二张C-D的票购买的是否是在一个座位, 如果在同一个位置, 那么此时A-&gt;D和A-&gt;E的余票仍然是9, 这是因为当你购买第一张票的时候, 已经对A-&gt;D和A-&gt;E造成了影响, 当你再对这个座位的第二张C-&gt;D购买时, 不再对其造成影响, 但是同时会对其他的一些情况造成影响, 可以结合图看一下</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829211814.png" alt="20240829211814"><br>通过这张图片我们可以很直观的看出来到底谁受到了影响, 简单来说就是无论座位是否相同, 影响的应该是差集, 这样就可以避免少卖, 因为库存多减少了一嘛</p>
 <p>了解过如何避免少卖, 我们应该如何避免多买呢?<br>我们通常可以使用简单的数据结构实现目的, 因为同一个位置, 且在相同站点之间只会有两种可能, 第一种有票, 第二种无票, 所以可以利用数字1和0表示有和没有, 那么座位1的信息在购买了A-&gt;B的余票之后, 信息可以存储为”1000”, 这样我们就可以实现余票数量的存储, 以及方便后续数据存储.</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829212940.png" alt="20240829212940"></p>
 
