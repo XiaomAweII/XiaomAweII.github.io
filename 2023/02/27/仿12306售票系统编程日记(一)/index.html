@@ -20,25 +20,30 @@
   <title>仿12306售票系统编程日记(一) - Hexo</title>
 
   
-    <meta name="description" content="前言最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.   同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾....  仿12306售票系统编程日记">
+    <meta name="description" content="前言最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.  同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾....  仿12306售票系统编程日记Day01">
 <meta property="og:type" content="article">
 <meta property="og:title" content="仿12306售票系统编程日记(一)">
 <meta property="og:url" content="http://example.com/2023/02/27/%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.   同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾....  仿12306售票系统编程日记">
+<meta property="og:description" content="前言最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.  同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾....  仿12306售票系统编程日记Day01">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205627.png">
+<meta property="og:image" content="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829211814.png">
+<meta property="og:image" content="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829212940.png">
 <meta property="article:published_time" content="2023-02-27T14:59:51.000Z">
-<meta property="article:modified_time" content="2024-08-29T02:04:52.634Z">
+<meta property="article:modified_time" content="2024-08-29T13:29:52.596Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="SpringBoot">
 <meta property="article:tag" content="微服务">
 <meta property="article:tag" content="高并发">
 <meta property="article:tag" content="项目日记">
+<meta property="article:tag" content="12306">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205627.png">
   
   
   
-  <meta name="keywords" content="SpringBoot,微服务,高并发,项目日记">
+  <meta name="keywords" content="SpringBoot,微服务,高并发,项目日记,12306">
 
   <!-- feed -->
   
@@ -69,7 +74,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%B8%80):Java%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/"><span class="title">面试题(一):Java基础部分</span></a><a class="item title" href="/2023/02/27/%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0(%E4%B8%80)/"><span class="title">仿12306售票系统编程日记(一)</span></a><a class="item title" href="/2023/08/27/%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E6%B5%8B%E8%AF%951/"><span class="title">文章列表测试</span></a><a class="item title" href="/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"><span class="title">测试第一篇文章</span></a><a class="item title" href="/2024/08/27/hello-world/"><span class="title">Hello World</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/02/27/%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0(%E4%B8%80)/"><span class="title">仿12306售票系统编程日记(一)</span></a><a class="item title" href="/2023/08/27/%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E6%B5%8B%E8%AF%951/"><span class="title">文章列表测试</span></a><a class="item title" href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%B8%80):Java%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/"><span class="title">面试题(一):Java基础部分</span></a><a class="item title" href="/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"><span class="title">测试第一篇文章</span></a><a class="item title" href="/2024/08/27/hello-world/"><span class="title">Hello World</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -82,7 +87,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F/">12306售票系统</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-02-27T14:59:51.000Z">2023-02-27</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-29T02:04:52.634Z">2024-08-29</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-02-27T14:59:51.000Z">2023-02-27</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-29T13:29:52.596Z">2024-08-29</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -93,11 +98,21 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目. 
+  </div><article class="md-text content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.
 
 同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾....
 </code></pre>
-<h1 id="仿12306售票系统编程日记"><a href="#仿12306售票系统编程日记" class="headerlink" title="仿12306售票系统编程日记"></a>仿12306售票系统编程日记</h1>
+<h1 id="仿12306售票系统编程日记Day01"><a href="#仿12306售票系统编程日记Day01" class="headerlink" title="仿12306售票系统编程日记Day01"></a>仿12306售票系统编程日记Day01</h1><h2 id="12306-模型设计-逻辑实现"><a href="#12306-模型设计-逻辑实现" class="headerlink" title="12306 模型设计&amp;逻辑实现"></a>12306 模型设计&amp;逻辑实现</h2><h3 id="余票查询-记录站-站余票"><a href="#余票查询-记录站-站余票" class="headerlink" title="余票查询 : 记录站-站余票"></a>余票查询 : 记录站-站余票</h3><p>12306 出色的高并发处理性能离不开它的模型设计, 余票查询中如果按照传统的多表查询, 那么面临每秒几十万次的请求时, 答案只有一个, 立马作废.</p>
+<p>余票查询 : 可以理解为是每两个站点之间的票进行销售, 如果购买一张长途的车票, 要做的本质上是n多张两两站点之间的售卖, 将查询变成了单表查询, 极大地提高了查询效率, 而其余余票数量也随某一站点关联增减变化</p>
+<p>看个栗子🌰:</p>
+<pre><code>假设有5个站点, 分别为A, B, C, D, E, 列车行驶的方向是ABCDE, 那么可供购买的余票方案有几种呢, 这是一个小学问题: 4+3+2+1=10种, 假设我们从A-&gt;B有10张票, 那么很显然每一种的票数都是10张, 为什么呢? 因为总共就这10个座位, 再多就只能车顶上站着吹风了! 接着, 如果我们对某两个站点之间的票进行了购买, 那么势必要对其他两个站点之间的余票数量减少, 原因是受到了影响, 有的人疑惑, 这是因为两两站点并非两个相邻站点, 明白这点肯定是理解了. 假设我们买走了A-&gt;B的票, 那么首先A-&gt;B对应的余票就应该减少1, 受到影响的A-&gt;C, A-&gt;D, A-&gt;E都会随之减少1, 这又是为什么呢, 这是因为这里的A-&gt;B, A-&gt;C, A-&gt;D, A-&gt;E不是让你提供方案, 而是已经提出的方案, 箭头两端就是两个站点, 不是原本的固定的路线, 可以参考下图理解一下:
+</code></pre>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205627.png" alt="20240829205627"><br>    这里往后面多画了一点, 多买了一张C-D的票, 那么按照上面的思路确实是这个样子, 但是实际上并没有这么简单, 因为我们刚才所说的10张票之所以有10张票是因为假设在这趟列车上只有10个座位, 那么就会出现第一张票A-&gt;B和第二张C-D的票购买的是否是在一个座位, 如果在同一个位置, 那么此时A-&gt;D和A-&gt;E的余票仍然是9, 这是因为当你购买第一张票的时候, 已经对A-&gt;D和A-&gt;E造成了影响, 当你再对这个座位的第二张C-&gt;D购买时, 不再对其造成影响, 但是同时会对其他的一些情况造成影响, 可以结合图看一下<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829211814.png" alt="20240829211814"><br>    通过这张图片我们可以很直观的看出来到底谁受到了影响, 简单来说就是无论座位是否相同, 影响的应该是差集, 这样就可以避免少卖, 因为库存多减少了一嘛</p>
+<pre><code>了解过如何避免少卖, 我们应该如何避免多买呢?
+我们通常可以使用简单的数据结构实现目的, 因为同一个位置, 且在相同站点之间只会有两种可能, 第一种有票, 第二种无票, 所以可以利用数字1和0表示有和没有, 那么座位1的信息在购买了A-&gt;B的余票之后, 信息可以存储为&quot;1000&quot;, 这样我们就可以实现余票数量的存储, 以及方便后续数据存储.
+</code></pre>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829212940.png" alt="20240829212940"></p>
+
 <div class="article-footer fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
@@ -135,7 +150,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0"><span class="toc-text">仿12306售票系统编程日记</span></a></div><div class="widget-footer">
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0Day01"><span class="toc-text">仿12306售票系统编程日记Day01</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12306-%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1-%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="toc-text">12306 模型设计&amp;逻辑实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%99%E7%A5%A8%E6%9F%A5%E8%AF%A2-%E8%AE%B0%E5%BD%95%E7%AB%99-%E7%AB%99%E4%BD%99%E7%A5%A8"><span class="toc-text">余票查询 : 记录站-站余票</span></a></li></ol></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
 </div></aside><div class='float-panel blur'>
