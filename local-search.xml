@@ -1,149 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>xiaoweii&#39;s blog</title>
+<search>
   
   
-  <link href="http://example.com/atom.xml" rel="self"/>
-  
-  <link href="http://example.com/"/>
-  <updated>2024-08-27T01:49:03.195Z</updated>
-  <id>http://example.com/</id>
-  
-  <author>
-    <name>xiaoweii</name>
-    
-  </author>
-  
-  <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2024/08/27/hello-world/"/>
-    <id>http://example.com/2024/08/27/hello-world/</id>
-    <published>2024-08-27T01:49:03.195Z</published>
-    <updated>2024-08-27T01:49:03.195Z</updated>
+    <link href="/2024/08/27/hello-world/"/>
+    <url>/2024/08/27/hello-world/</url>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
     
   </entry>
   
+  
+  
   <entry>
     <title>文章列表测试</title>
-    <link href="http://example.com/2023/08/27/%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E6%B5%8B%E8%AF%951/"/>
-    <id>http://example.com/2023/08/27/%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E6%B5%8B%E8%AF%951/</id>
-    <published>2023-08-27T02:59:51.000Z</published>
-    <updated>2024-08-29T12:55:34.994Z</updated>
+    <link href="/2023/08/27/%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E6%B5%8B%E8%AF%951/"/>
+    <url>/2023/08/27/%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E6%B5%8B%E8%AF%951/</url>
     
     <content type="html"><![CDATA[<p>写了一个标签tag,不知道能不能成功,让我重新上传一下</p><p>ceshi </p><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205531.png" alt="20240829205531"></p>]]></content>
     
     
+    <categories>
       
+      <category>测试1</category>
       
-    <summary type="html">&lt;p&gt;写了一个标签tag,不知道能不能成功,让我重新上传一下&lt;/p&gt;
-&lt;p&gt;ceshi &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205531.png&quot; alt=&quot;2024</summary>
+    </categories>
+    
+    
+    <tags>
       
-    
-    
-    
-    <category term="测试1" scheme="http://example.com/categories/%E6%B5%8B%E8%AF%951/"/>
-    
-    
-    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
+      <tag>测试</tag>
+      
+    </tags>
     
   </entry>
   
+  
+  
   <entry>
     <title>测试第一篇文章</title>
-    <link href="http://example.com/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
-    <id>http://example.com/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</id>
-    <published>2023-08-27T02:59:51.000Z</published>
-    <updated>2024-08-28T12:27:26.151Z</updated>
+    <link href="/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+    <url>/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
     
     <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.println(<span class="hljs-string">&quot;Hello World!&quot;</span>);<br><span class="hljs-type">int</span> a=b<br></code></pre></td></tr></table></figure><h2 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>阿斯顿</p><pre><code class=" mermaid">classDiagram    class Animal &#123;        +String name        +int age        +eat()        +sleep()    &#125;    class Dog &#123;        +bark()    &#125;    class Cat &#123;        +meow()    &#125;    Animal &lt;|-- Dog    Animal &lt;|-- Cat</code></pre>]]></content>
     
     
+    <categories>
       
+      <category>测试1</category>
       
-    <summary type="html">&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;</summary>
+    </categories>
+    
+    
+    <tags>
       
-    
-    
-    
-    <category term="测试1" scheme="http://example.com/categories/%E6%B5%8B%E8%AF%951/"/>
-    
-    
-    <category term="测试" scheme="http://example.com/tags/%E6%B5%8B%E8%AF%95/"/>
+      <tag>测试</tag>
+      
+    </tags>
     
   </entry>
   
+  
+  
   <entry>
     <title>面试题(一):Java基础部分</title>
-    <link href="http://example.com/2023/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%B8%80):Java%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/"/>
-    <id>http://example.com/2023/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%B8%80):Java%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</id>
-    <published>2023-04-02T13:59:51.000Z</published>
-    <updated>2024-08-29T11:22:18.641Z</updated>
+    <link href="/2023/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%B8%80):Java%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/"/>
+    <url>/2023/04/02/%E9%9D%A2%E8%AF%95%E9%A2%98(%E4%B8%80):Java%E5%9F%BA%E7%A1%80%E9%83%A8%E5%88%86/</url>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><pre><code class="hljs">之前是看着开发者客栈的面试题花了一两个月过了一遍面试题, 但是这些背的东西时隔半年, 在我的脑海当中只有简言片语还在弥留, 打算再过一遍八股文, 结果开发者客栈里的文章有好几篇质量很高的文章只有一个题头了, 有种物是人非的感觉, 不过这种面试题的网站还是很多的, 这次计划跟着一个up主程序员鱼皮, 这位大神写的面试鸭网站进行一套面试多面手的组合拳!面试鸭网址: https://www.mianshiya.com/    开发者客栈: https://www.developers.pub/如果有时间的话我们也可以再看一下开发者客栈, 他基本上每道题都给出了易于理解的实例代码, 这也是我为什么很喜欢开发者客栈的原因, 毕竟理科生嘛很不喜欢死板的背, 结合实例有学而以用之的成就感</code></pre><h2 id="你认为的Java优势是什么"><a href="#你认为的Java优势是什么" class="headerlink" title="你认为的Java优势是什么?"></a>你认为的Java优势是什么?</h2><blockquote><p>可以从<strong>跨平台</strong>,<strong>垃圾回收</strong>,<strong>生态</strong>三个方面进行阐述</p></blockquote><h3 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h3><p>计算机当中识别的是二进制的语言, 每个平台,如macos,windows,Linux等等执行的机器码是不一样的, 所以你在这个平台写了一套程序, 在另一个平台跑起来的时候就会出现报错, 难道说我们做一套程序不能通用, 还需要每个平台写一套? 这极大增加了开发的成本, 但是Java为我们加了一层中间层JVM虚拟机, 帮助我们一次性编写, 多平台运行</p><p>编译执行过程是先把Java源代码编译成字节码, 字节码再由JVM解释或JIT编译执行, 而因为JIT编译时需要预热, 所以还提供了AOT(Ahead-of-Time Compliation), 可以直接把字节码转成机器码, 来让程序重启之后能迅速拉满战斗力</p><p>关键词 : <strong>JVM</strong>, <strong>一次编写多平台运行</strong>, <strong>编译执行过程</strong></p><h3 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h3>]]></content>
     
     
+    <categories>
       
+      <category>面试八股文</category>
       
-    <summary type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;之前是看着开发者客栈的面试题花了一两个月过了一遍面试题, 但是这些背的东西时隔半年, 在我的脑海当</summary>
+    </categories>
+    
+    
+    <tags>
       
-    
-    
-    
-    <category term="面试八股文" scheme="http://example.com/categories/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/"/>
-    
-    
-    <category term="面试" scheme="http://example.com/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-    <category term="基础面试题" scheme="http://example.com/tags/%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    
-    <category term="八股文," scheme="http://example.com/tags/%E5%85%AB%E8%82%A1%E6%96%87/"/>
+      <tag>面试</tag>
+      
+      <tag>基础面试题</tag>
+      
+      <tag>八股文,</tag>
+      
+    </tags>
     
   </entry>
   
+  
+  
   <entry>
     <title>仿12306售票系统编程日记(一)</title>
-    <link href="http://example.com/2023/02/27/%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0(%E4%B8%80)/"/>
-    <id>http://example.com/2023/02/27/%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0(%E4%B8%80)/</id>
-    <published>2023-02-27T14:59:51.000Z</published>
-    <updated>2024-08-29T13:37:10.086Z</updated>
+    <link href="/2023/02/27/%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0(%E4%B8%80)/"/>
+    <url>/2023/02/27/%E4%BB%BF12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B%E6%97%A5%E8%AE%B0(%E4%B8%80)/</url>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全面的java项目.</p><p>同时最近学习完了设计模式, 但是仅限于一些简单的代码, 没有在项目当中使用过, 通过本次项目在代码编写的过程中融入设计模式, 还有查漏补缺, 把之前可能遗忘的知识点通过项目实践进行回顾….</p><h1 id="仿12306售票系统编程日记Day01"><a href="#仿12306售票系统编程日记Day01" class="headerlink" title="仿12306售票系统编程日记Day01"></a>仿12306售票系统编程日记Day01</h1><h2 id="12306-模型设计-逻辑实现"><a href="#12306-模型设计-逻辑实现" class="headerlink" title="12306 模型设计&amp;逻辑实现"></a>12306 模型设计&amp;逻辑实现</h2><h3 id="余票查询-记录站-站余票"><a href="#余票查询-记录站-站余票" class="headerlink" title="余票查询 : 记录站-站余票"></a>余票查询 : 记录站-站余票</h3><p>12306 出色的高并发处理性能离不开它的模型设计, 余票查询中如果按照传统的多表查询, 那么面临每秒几十万次的请求时, 答案只有一个, 立马作废.</p><p>余票查询 : 可以理解为是每两个站点之间的票进行销售, 如果购买一张长途的车票, 要做的本质上是n多张两两站点之间的售卖, 将查询变成了单表查询, 极大地提高了查询效率, 而其余余票数量也随某一站点关联增减变化</p><p>看个栗子🌰:</p><p>假设有5个站点, 分别为A, B, C, D, E, 列车行驶的方向是ABCDE, 那么可供购买的余票方案有几种呢, 这是一个小学问题: 4+3+2+1&#x3D;10种, 假设我们从A-&gt;B有10张票, 那么很显然每一种的票数都是10张, 为什么呢? 因为总共就这10个座位, 再多就只能车顶上站着吹风了! 接着, 如果我们对某两个站点之间的票进行了购买, 那么势必要对其他两个站点之间的余票数量减少, 原因是受到了影响, 有的人疑惑, 这是因为两两站点并非两个相邻站点, 明白这点肯定是理解了. 假设我们买走了A-&gt;B的票, 那么首先A-&gt;B对应的余票就应该减少1, 受到影响的A-&gt;C, A-&gt;D, A-&gt;E都会随之减少1, 这又是为什么呢, 这是因为这里的A-&gt;B, A-&gt;C, A-&gt;D, A-&gt;E不是让你提供方案, 而是已经提出的方案, 箭头两端就是两个站点, 不是原本的固定的路线, 可以参考下图理解一下:</p><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205627.png" alt="20240829205627"></p><p>这里往后面多画了一点, 多买了一张C-D的票, 那么按照上面的思路确实是这个样子, 但是实际上并没有这么简单, 因为我们刚才所说的10张票之所以有10张票是因为假设在这趟列车上只有10个座位, 那么就会出现第一张票A-&gt;B和第二张C-D的票购买的是否是在一个座位, 如果在同一个位置, 那么此时A-&gt;D和A-&gt;E的余票仍然是9, 这是因为当你购买第一张票的时候, 已经对A-&gt;D和A-&gt;E造成了影响, 当你再对这个座位的第二张C-&gt;D购买时, 不再对其造成影响, 但是同时会对其他的一些情况造成影响, 可以结合图看一下</p><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829211814.png" alt="20240829211814"><br>通过这张图片我们可以很直观的看出来到底谁受到了影响, 简单来说就是无论座位是否相同, 影响的应该是差集, 这样就可以避免少卖, 因为库存多减少了一嘛</p><p>了解过如何避免少卖, 我们应该如何避免多买呢?<br>我们通常可以使用简单的数据结构实现目的, 因为同一个位置, 且在相同站点之间只会有两种可能, 第一种有票, 第二种无票, 所以可以利用数字1和0表示有和没有, 那么座位1的信息在购买了A-&gt;B的余票之后, 信息可以存储为”1000”, 这样我们就可以实现余票数量的存储, 以及方便后续数据存储.</p><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829212940.png" alt="20240829212940"></p>]]></content>
     
     
+    <categories>
       
+      <category>12306售票系统</category>
       
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;最近发现一个非常好的项目, 可以练习SpringBoot, SpringCloud微服务还有项目中令人头疼的高并发问题, 是一个技术栈非常全</summary>
+    </categories>
+    
+    
+    <tags>
       
-    
-    
-    
-    <category term="12306售票系统" scheme="http://example.com/categories/12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="SpringBoot" scheme="http://example.com/tags/SpringBoot/"/>
-    
-    <category term="微服务" scheme="http://example.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
-    
-    <category term="高并发" scheme="http://example.com/tags/%E9%AB%98%E5%B9%B6%E5%8F%91/"/>
-    
-    <category term="项目日记" scheme="http://example.com/tags/%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0/"/>
-    
-    <category term="12306" scheme="http://example.com/tags/12306/"/>
+      <tag>SpringBoot</tag>
+      
+      <tag>微服务</tag>
+      
+      <tag>高并发</tag>
+      
+      <tag>项目日记</tag>
+      
+      <tag>12306</tag>
+      
+    </tags>
     
   </entry>
   
-</feed>
+  
+  
+  
+</search>
