@@ -72,20 +72,6 @@
   </url>
   
   <url>
-    <loc>http://blog.xiaoweii.xyz/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2024-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.xiaoweii.xyz/tags/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2024-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.xiaoweii.xyz/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</loc>
     <lastmod>2024-09-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -114,6 +100,13 @@
   </url>
   
   <url>
+    <loc>http://blog.xiaoweii.xyz/tags/%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2024-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.xiaoweii.xyz/tags/%E9%9D%A2%E8%AF%95/</loc>
     <lastmod>2024-09-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -134,10 +127,17 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>http://blog.xiaoweii.xyz/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/</loc>
+    <lastmod>2024-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
-    <loc>http://blog.xiaoweii.xyz/categories/SpringBoot%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/</loc>
+    <loc>http://blog.xiaoweii.xyz/categories/12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2024-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -151,14 +151,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xiaoweii.xyz/categories/12306%E5%94%AE%E7%A5%A8%E7%B3%BB%E7%BB%9F/</loc>
+    <loc>http://blog.xiaoweii.xyz/categories/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/</loc>
     <lastmod>2024-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://blog.xiaoweii.xyz/categories/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/</loc>
+    <loc>http://blog.xiaoweii.xyz/categories/SpringBoot%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2024-09-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
