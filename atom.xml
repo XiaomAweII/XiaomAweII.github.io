@@ -6,7 +6,7 @@
   <link href="http://blog.xiaoweii.xyz/atom.xml" rel="self"/>
   
   <link href="http://blog.xiaoweii.xyz/"/>
-  <updated>2024-09-02T11:03:21.121Z</updated>
+  <updated>2024-09-04T02:12:04.404Z</updated>
   <id>http://blog.xiaoweii.xyz/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云服务器上搭建数据库</title>
+    <link href="http://blog.xiaoweii.xyz/2024/09/04/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://blog.xiaoweii.xyz/2024/09/04/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <published>2024-09-04T01:38:02.000Z</published>
+    <updated>2024-09-04T02:12:04.404Z</updated>
+    
+    <content type="html"><![CDATA[<p>在阿里云服务器上搭建数据库和源 IP 访问可以通过以下几个步骤进行</p><h2 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h2><p>我搭建的是 MySQL 数据库, 因为最常用嘛, 回头可以试一下其他的</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新包列表</span></span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装MySQL</span></span><br><span class="line"><span class="built_in">sudo</span> apt install mysql-server</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动MySQL服务</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl start mysql</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置MySQL开机启动</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> mysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行安全脚本</span></span><br><span class="line"><span class="built_in">sudo</span> mysql_secure_installation</span><br></pre></td></tr></table></figure><h2 id="配置-MySQL-远程访问"><a href="#配置-MySQL-远程访问" class="headerlink" title="配置 MySQL 远程访问"></a>配置 MySQL 远程访问</h2><p>编辑 MySQL 配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure><p>找到 bind-address 行, 将其修改为</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind-address</span><br></pre></td></tr></table></figure><p>因为如果你的端口号想要修改, 因为 3306 确实容易被攻击和勒索</p><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240904094647.png" alt="20240904094647"></p><p>那就让他攻击吧, 坚决不付费, 随时保存你的 sql 结构文件而且可以使用阿里云快照服务<br>同时可以修改常用端口号</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port = 你想用的端口号</span><br></pre></td></tr></table></figure><p>重启 MySQL 服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart mysql</span><br></pre></td></tr></table></figure><h2 id="创建远程访问用户"><a href="#创建远程访问用户" class="headerlink" title="创建远程访问用户"></a>创建远程访问用户</h2><p>登录 MySQL</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> mysql -u root -p</span><br></pre></td></tr></table></figure><p>创建用户并授权</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">&#x27;你的远端连接用户&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED BY <span class="string">&#x27;你的密码&#x27;</span>;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;你的远端连接用户&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure><p>下面用 remoteuser 和 remotepassword 代替</p><h2 id="配置阿里云安全组"><a href="#配置阿里云安全组" class="headerlink" title="配置阿里云安全组"></a>配置阿里云安全组</h2><ol><li>登录到阿里云控制台(点击右上角头像, 然后进入到用户界面, 控制台在该界面左上角)</li><li>进入 ECS 实例列表</li><li>选择你想要操作的实例 -&gt; 更多 -&gt; 网络和安全组 -&gt; 安全组配置</li><li>点击”配置规则” -&gt; “添加安全组规则”</li><li>添加入方向规则:<ul><li>授权策略: 允许</li><li>协议类型: MySQL(3306), 或者自定义 TCP</li><li>端口范围: 3306&#x2F;3306 或者 你自己定义的端口号, 修改了要去配置文件当中也修改, 根据上边的操作</li><li>授权对象: 您的源 IP 地址(如果是所有 IP,可以填写 0.0.0.0&#x2F;0,但不推荐), 你也可以 ip-config 查看自己电脑 ip, 进行写入, 当然这样也就你可以访问了</li></ul></li></ol><h2 id="配置服务器防火墙"><a href="#配置服务器防火墙" class="headerlink" title="配置服务器防火墙"></a>配置服务器防火墙</h2><p>如果使用的是 UFW(Ubuntu 默认防火墙)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw allow 3306</span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span></span><br></pre></td></tr></table></figure><p>如果修改了端口, 那么就填你自己的端口</p><h2 id="测试连接"><a href="#测试连接" class="headerlink" title="测试连接"></a>测试连接</h2><p>从你的电脑本地机器或允许的 ip 地址, 使用 MySQL 客户端工具尝试连接</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h your_server_ip -u remoteuser -p</span><br></pre></td></tr></table></figure><p>然后输入摩玛</p><h2 id="如果修改了端口范围"><a href="#如果修改了端口范围" class="headerlink" title="如果修改了端口范围"></a>如果修改了端口范围</h2><ol><li>修改 MySQL 配置文件</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/mysql/mysql.conf.d/mysqld.cnf</span><br></pre></td></tr></table></figure><ol start="2"><li>找到 port 行（如果没有就添加），将其修改为：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">port = 你的端口号</span><br></pre></td></tr></table></figure><ol start="3"><li>重启 MySQL 服务</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart mysql</span><br></pre></td></tr></table></figure><ol start="4"><li><p>然后重复去阿里云安全组当中配置, 修改或添加端口, 如果不想 3306 被访问的话, 可以删除</p></li><li><p>更新防火墙规则</p></li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> ufw delete allow 3306  <span class="comment"># 删除旧规则（如果存在）</span></span><br><span class="line"><span class="built_in">sudo</span> ufw allow 你的端口号</span><br><span class="line"><span class="built_in">sudo</span> ufw <span class="built_in">enable</span></span><br></pre></td></tr></table></figure><ol start="6"><li>测试连接</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h your_server_ip -P 你的端口号 -u remoteuser -p</span><br></pre></td></tr></table></figure><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="查看服务器-MySQL-监听端口号"><a href="#查看服务器-MySQL-监听端口号" class="headerlink" title="查看服务器 MySQL 监听端口号"></a>查看服务器 MySQL 监听端口号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> netstat -tlnp | grep mysql</span><br></pre></td></tr></table></figure><h3 id="远程访问设置"><a href="#远程访问设置" class="headerlink" title="远程访问设置"></a>远程访问设置</h3><p>给你对应的用户赋予权限, 确保你使用的用户存在且权限正确, 有权进行远程连接</p><h3 id="服务器状态"><a href="#服务器状态" class="headerlink" title="服务器状态"></a>服务器状态</h3><p>确保 MySQL 服务正在运行\</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status mysql</span><br></pre></td></tr></table></figure><h3 id="网络连接检查"><a href="#网络连接检查" class="headerlink" title="网络连接检查"></a>网络连接检查</h3><p>如果还是不行, 查看是有有网, 可以尝试 pint 或者 telnet, 确保本地机器可以访问到阿里云服务器的 ip 地址</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ping 你的服务器公网ip</span><br><span class="line">telnet 你的服务器公网ip 你的端口号</span><br></pre></td></tr></table></figure><h3 id="用户权限"><a href="#用户权限" class="headerlink" title="用户权限"></a>用户权限</h3><p>确保用户有权限可以从任何主机连接</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">User</span>, Host <span class="keyword">from</span> mysql.user <span class="keyword">where</span> <span class="keyword">User</span> <span class="operator">=</span> <span class="string">&#x27;你的用户名&#x27;</span>;</span><br></pre></td></tr></table></figure><p>应该能看到 Host 列为<code>%</code></p><h3 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h3><p>检查 MySQL 的错误日志, 获取到更多可用信息, 方便解决</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">tail</span> -f /var/log/mysql/error.log</span><br></pre></td></tr></table></figure><h3 id="临时测试"><a href="#临时测试" class="headerlink" title="临时测试"></a>临时测试</h3><p>如果还是无法连接，可以临时将 MySQL 配置为监听所有接口，并重启服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> sed -i <span class="string">&#x27;s/bind-address.*/bind-address = 0.0.0.0/&#x27;</span> /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart mysql</span><br></pre></td></tr></table></figure><h3 id="检查书写错误"><a href="#检查书写错误" class="headerlink" title="检查书写错误"></a>检查书写错误</h3><p>检查连接字符串</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 你的服务器公网ip -P 你的端口号 -u 你的用户名 -p你的密码</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在阿里云服务器上搭建数据库和源 IP 访问可以通过以下几个步骤进行&lt;/p&gt;
+&lt;h2 id=&quot;安装数据库&quot;&gt;&lt;a href=&quot;#安装数据库&quot; class=&quot;headerlink&quot; title=&quot;安装数据库&quot;&gt;&lt;/a&gt;安装数据库&lt;/h2&gt;&lt;p&gt;我搭建的是 MySQL 数据库, </summary>
+      
+    
+    
+    
+    <category term="云服务器搭建数据库" scheme="http://blog.xiaoweii.xyz/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="阿里云" scheme="http://blog.xiaoweii.xyz/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
+    
+    <category term="云服务器" scheme="http://blog.xiaoweii.xyz/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="数据库" scheme="http://blog.xiaoweii.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库的like模糊查询如何优化</title>
+    <link href="http://blog.xiaoweii.xyz/2024/09/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84like%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96/"/>
+    <id>http://blog.xiaoweii.xyz/2024/09/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84like%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96/</id>
+    <published>2024-09-03T06:15:21.000Z</published>
+    <updated>2024-09-03T07:00:33.836Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在MySQL中, <code>LIKE</code>模糊查询可能会导致性能问题, 使用通配符<code>%</code>开头时, 将不会使用索引进行查询, 因为这会导致全表扫描</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="合理使用索引"><a href="#合理使用索引" class="headerlink" title="合理使用索引"></a>合理使用索引</h3><p><strong>前缀匹配</strong>: 使用 <code>like &#39;prefix%&#39;</code> 的形式, 通配符在开头会影响索引导致全表扫描, 那我们就把他放后边不就好了, 比如</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">&#x27;Abc%&#x27;</span>;</span><br></pre></td></tr></table></figure><p>这样子的话, 如果 <code>username</code> 字段有索引, 前缀匹配就会用到索引</p><h3 id="使用反向索引"><a href="#使用反向索引" class="headerlink" title="使用反向索引"></a>使用反向索引</h3><p>但是有时候确实需要我们使用后缀匹配(即 <code>like &#39;%suffix&#39;</code>), 那么我们就可以创建一个辅助队列存储反转字符串, 并基于辅助队列进行前缀匹配, 这样我们又回到了第一种情况, 就又可以通过索引进行查询</p><ul><li><strong>创建反向字符串</strong>:</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> users <span class="keyword">add</span> reversed_username <span class="type">varchar</span>(<span class="number">255</span>);</span><br><span class="line"><span class="keyword">update</span> users <span class="keyword">set</span> reversed_username <span class="operator">=</span> reverse(username);</span><br><span class="line"><span class="keyword">create</span> index idx_reversed_username <span class="keyword">on</span> users(reversed_username);</span><br></pre></td></tr></table></figure><h3 id="限制扫描范围"><a href="#限制扫描范围" class="headerlink" title="限制扫描范围"></a>限制扫描范围</h3><p>在 like 查询中, 如果可以通过其他条件进一步缩小范围, 也可以实现对模糊查询进行优化, 查询时尽量加入这些条件</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users <span class="keyword">where</span> created_at <span class="operator">&gt;=</span> <span class="string">&#x27;2022-03-01&#x27;</span> <span class="keyword">and</span> username <span class="keyword">like</span> <span class="string">&#x27;Abc%&#x27;</span>;</span><br></pre></td></tr></table></figure><h3 id="使用缓存"><a href="#使用缓存" class="headerlink" title="使用缓存"></a>使用缓存</h3><p>如果对于相同的查询需要频繁执行, 可以考虑在应用层实施缓存策略来减少数据库负载, 这一部分可以去看MyBatis的缓存的章节, MyBatis在这一块做的特别好</p><p>同时也可以借助于像REDIS这样的缓存, 提升查询性能, 前提是这些数据不是经常变化的数据, 我们也可以开启cache去看一下缓存命中率</p><h3 id="借助专业工具"><a href="#借助专业工具" class="headerlink" title="借助专业工具"></a>借助专业工具</h3><p>对于非常大的数据集或者需要复杂文本处理和搜索功能, 可以外部全文搜索引擎 Elasticsearch ,  Solr 或者 Sphinx 来代替MySQL的like操作, 这几个工具我还没怎么使用过, 我操作的数据最多有过几千条, 还是缺乏经验, 碰见的太少了, 抽时间压力测试一下, 找个工具练练.</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过以上这些方法优化 like 查询, 可以显著提升数据库的查询性能, 应根据具体场景选择合适的优化策略. 使用<code>explain</code>分析查询执行计划, 可以帮助确认优化效果</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;场景&quot;&gt;&lt;a href=&quot;#场景&quot; class=&quot;headerlink&quot; title=&quot;场景&quot;&gt;&lt;/a&gt;场景&lt;/h2&gt;&lt;p&gt;在MySQL中, &lt;code&gt;LIKE&lt;/code&gt;模糊查询可能会导致性能问题, 使用通配符&lt;code&gt;%&lt;/code&gt;开头时, 将不会使用</summary>
+      
+    
+    
+    
+    <category term="MySQl数据库优化" scheme="http://blog.xiaoweii.xyz/categories/MySQl%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
+    
+    
+    <category term="like" scheme="http://blog.xiaoweii.xyz/tags/like/"/>
+    
+    <category term="模糊查询" scheme="http://blog.xiaoweii.xyz/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/"/>
+    
+    <category term="MySQL" scheme="http://blog.xiaoweii.xyz/tags/MySQL/"/>
+    
+    <category term="mysql" scheme="http://blog.xiaoweii.xyz/tags/mysql/"/>
+    
+    <category term="数据库优化" scheme="http://blog.xiaoweii.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot学习日记(二)</title>
@@ -73,7 +134,7 @@
     <link href="http://blog.xiaoweii.xyz/2024/08/27/hello-world/"/>
     <id>http://blog.xiaoweii.xyz/2024/08/27/hello-world/</id>
     <published>2024-08-27T01:49:03.195Z</published>
-    <updated>2024-08-27T01:49:03.195Z</updated>
+    <updated>2024-09-02T15:19:09.680Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
     
@@ -85,6 +146,30 @@
     
     
     
+    
+  </entry>
+  
+  <entry>
+    <title>测试第一篇文章</title>
+    <link href="http://blog.xiaoweii.xyz/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+    <id>http://blog.xiaoweii.xyz/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</id>
+    <published>2023-08-27T02:59:51.000Z</published>
+    <updated>2024-08-28T12:27:26.151Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line"><span class="type">int</span> a=b</span><br></pre></td></tr></table></figure><h2 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>阿斯顿</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class Animal &#123;</span><br><span class="line">        +String name</span><br><span class="line">        +int age</span><br><span class="line">        +eat()</span><br><span class="line">        +sleep()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class Dog &#123;</span><br><span class="line">        +bark()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class Cat &#123;</span><br><span class="line">        +meow()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Animal &lt;|-- Dog</span><br><span class="line">    Animal &lt;|-- Cat</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;</summary>
+      
+    
+    
+    
+    <category term="测试1" scheme="http://blog.xiaoweii.xyz/categories/%E6%B5%8B%E8%AF%951/"/>
+    
+    
+    <category term="测试" scheme="http://blog.xiaoweii.xyz/tags/%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
@@ -103,30 +188,6 @@
     <summary type="html">&lt;p&gt;写了一个标签tag,不知道能不能成功,让我重新上传一下&lt;/p&gt;
 &lt;p&gt;ceshi &lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240829205531.png&quot; alt=&quot;2024</summary>
-      
-    
-    
-    
-    <category term="测试1" scheme="http://blog.xiaoweii.xyz/categories/%E6%B5%8B%E8%AF%951/"/>
-    
-    
-    <category term="测试" scheme="http://blog.xiaoweii.xyz/tags/%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>测试第一篇文章</title>
-    <link href="http://blog.xiaoweii.xyz/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
-    <id>http://blog.xiaoweii.xyz/2023/08/27/%E6%B5%8B%E8%AF%95%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</id>
-    <published>2023-08-27T02:59:51.000Z</published>
-    <updated>2024-08-28T12:27:26.151Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line"><span class="type">int</span> a=b</span><br></pre></td></tr></table></figure><h2 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>阿斯顿</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class Animal &#123;</span><br><span class="line">        +String name</span><br><span class="line">        +int age</span><br><span class="line">        +eat()</span><br><span class="line">        +sleep()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class Dog &#123;</span><br><span class="line">        +bark()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    class Cat &#123;</span><br><span class="line">        +meow()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Animal &lt;|-- Dog</span><br><span class="line">    Animal &lt;|-- Cat</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;</summary>
       
     
     
