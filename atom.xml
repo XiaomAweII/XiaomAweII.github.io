@@ -6,7 +6,7 @@
   <link href="http://blog.xiaoweii.xyz/atom.xml" rel="self"/>
   
   <link href="http://blog.xiaoweii.xyz/"/>
-  <updated>2024-09-04T02:26:13.266Z</updated>
+  <updated>2024-09-06T02:18:35.118Z</updated>
   <id>http://blog.xiaoweii.xyz/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis常用命令</title>
+    <link href="http://blog.xiaoweii.xyz/2024/09/06/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.xiaoweii.xyz/2024/09/06/Redis%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2024-09-05T17:17:39.000Z</published>
+    <updated>2024-09-06T02:18:35.118Z</updated>
+    
+    <content type="html"><![CDATA[<p>这一章简单来了解下 Redis 常见的一些命令, 方便大家学习以及我之后的查阅</p><h2 id="mac-下载-Redis"><a href="#mac-下载-Redis" class="headerlink" title="mac 下载 Redis"></a>mac 下载 Redis</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install Redis</span><br></pre></td></tr></table></figure><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906012228.png" alt="20240906012228"></p><h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><h4 id="检查-Redis-服务器版本"><a href="#检查-Redis-服务器版本" class="headerlink" title="检查 Redis 服务器版本"></a>检查 Redis 服务器版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server --version</span><br></pre></td></tr></table></figure><h4 id="检查客户端安装"><a href="#检查客户端安装" class="headerlink" title="检查客户端安装"></a>检查客户端安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-cli --version</span><br></pre></td></tr></table></figure><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906012904.png" alt="20240906012904"></p><h2 id="启动和连接-Redis"><a href="#启动和连接-Redis" class="headerlink" title="启动和连接 Redis"></a>启动和连接 Redis</h2><h3 id="启动-Redis"><a href="#启动-Redis" class="headerlink" title="启动 Redis"></a>启动 Redis</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis-server</span><br></pre></td></tr></table></figure><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906013057.png" alt="20240906013057"></p><h3 id="连接到-Redis"><a href="#连接到-Redis" class="headerlink" title="连接到 Redis"></a>连接到 Redis</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">redis-cli <span class="comment">#Redis CLI Client</span></span><br><span class="line">telnet 127.0.0.1 6379 <span class="comment">#telnet</span></span><br></pre></td></tr></table></figure><p><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906013348.png" alt="20240906013348"></p><h3 id="退出"><a href="#退出" class="headerlink" title="退出"></a>退出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure><p>或者</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quit</span><br></pre></td></tr></table></figure><h2 id="字符串-Strings"><a href="#字符串-Strings" class="headerlink" title="字符串(Strings)"></a>字符串(Strings)</h2><p>Redis 缓存中的操作时间福再度不需要完全记忆, 不过了解常用的操作时间复杂度对于我们更好的使用 Redis 和优化性能, 记住每一部分的特性即可!<br>String 大多数操作时间复杂度 O(1)</p><h3 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> key value</span><br></pre></td></tr></table></figure><p>设置键<code>key</code>的值为<code>value</code><br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906085948.png" alt="20240906085948"></p><h3 id="SETEX"><a href="#SETEX" class="headerlink" title="SETEX"></a>SETEX</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setex key seconds value</span><br></pre></td></tr></table></figure><p>将键<code>key</code>的值设置为<code>value</code>, 并且超时时间为<code>milliseconds</code>毫秒<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906090445.png" alt="20240906090445"></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setnx key value</span><br></pre></td></tr></table></figure><p>只有在键 key 不存在的情况下, 将<code>key</code>的值设置为<code>value</code><br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906091236.png" alt="20240906091236"></p><h3 id="PSETEX"><a href="#PSETEX" class="headerlink" title="PSETEX"></a>PSETEX</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psetex key milliseconds value</span><br></pre></td></tr></table></figure><p>将键<code>key</code>的值设置为<code>value</code>, 并且超时时间为<code>milliseconds</code><br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906090856.png" alt="20240906090856"></p><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get key</span><br></pre></td></tr></table></figure><p>返回键<code>key</code>的值设置的<code>value</code><br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906091420.png" alt="20240906091420"></p><h3 id="GETSET"><a href="#GETSET" class="headerlink" title="GETSET"></a>GETSET</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getset key value</span><br></pre></td></tr></table></figure><p>将键<code>key</code>的值设置为 value, 并返回设置前的旧值. 若没有旧值则返回<code>nli</code><br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906091636.png" alt="20240906091636"></p><h3 id="APPEND"><a href="#APPEND" class="headerlink" title="APPEND"></a>APPEND</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append key value</span><br></pre></td></tr></table></figure><p>如果键<code>key</code>存在并且值是一个字符串, 则把<code>value</code>追加到现有值的末尾<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906092041.png" alt="20240906092041"><br>如果<code>key</code>不存在, 则将<code>key</code>的值设置为<code>value</code><br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906092152.png" alt="20240906092152"><br>返回追加<code>value</code>之后该<code>value</code>的长度</p><h3 id="SETRANGE"><a href="#SETRANGE" class="headerlink" title="SETRANGE"></a>SETRANGE</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setrange key offset value</span><br></pre></td></tr></table></figure><p>最好时间复杂度 O(1), 最坏时间复杂度 O(N)<br>从偏移量<code>offset</code>开始用<code>value</code>字符串覆盖键<code>key</code>存储的原字符串. <code>offset</code>从 0 开始返回修改后新的<code>value</code>字符串的长度</p><h3 id="GETRANGE"><a href="#GETRANGE" class="headerlink" title="GETRANGE"></a>GETRANGE</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getrange key start end</span><br></pre></td></tr></table></figure><p>时间复杂度 O(N)<br>返回<code>key</code>存储的字符串的从<code>start</code>到<code>end</code>之间(包括<code>start</code>和<code>end</code>)的部分.<br>返回<code>value</code>指定的子串<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906093124.png" alt="20240906093124"></p><h3 id="INCR-DECR"><a href="#INCR-DECR" class="headerlink" title="INCR&#x2F;DECR"></a>INCR&#x2F;DECR</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">incr key</span><br><span class="line">decr key</span><br></pre></td></tr></table></figure><p>将键<code>key</code>存储的数字值<code>value</code>加一&#x2F;减一.<br>若<code>key</code>不存在则值优先初始化为 0 再加一&#x2F;减一.<br>若<code>key</code>存储的值不能被解释为数字,则返回错误.<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906093937.png" alt="20240906093937"></p><h3 id="INCRBY-DECRBY"><a href="#INCRBY-DECRBY" class="headerlink" title="INCRBY&#x2F;DECRBY"></a>INCRBY&#x2F;DECRBY</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">incrby key increment</span><br><span class="line">decrby key decrement</span><br></pre></td></tr></table></figure><p>将键<code>key</code>存储的数字值<code>value</code>加上&#x2F;减去一个<code>increment/decrement</code>的量.<br>若<code>key</code>不存在则值先初始化为 0 再加&#x2F;减.<br>若<code>key</code>存储的值或<code>increment</code>不能被解释为浮点数值,则返回错误<br>区别就在于原先只能加&#x2F;减 1,这个可以加减一个量<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906094733.png" alt="20240906094733"></p><h3 id="INCRBYFLOAT"><a href="#INCRBYFLOAT" class="headerlink" title="INCRBYFLOAT"></a>INCRBYFLOAT</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">incrbyfloat key increment</span><br></pre></td></tr></table></figure><p>将键<code>key</code>存储的浮点数值<code>value</code>加上一个<code>increment</code>的增量.<br>若<code>key</code>不存在则值先初始化为 0 再执行加上增量的操作.<br>若<code>key</code>存储的值或<code>increment</code>不能被解释为浮点数值, 则返回错误.<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906095229.png" alt="20240906095229"></p><h3 id="MEST"><a href="#MEST" class="headerlink" title="MEST"></a>MEST</h3><p>时间复杂度 O(N)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mset key1 value1 key2 value2 ...</span><br></pre></td></tr></table></figure><p>同时为多个键设置值<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906100821.png" alt="20240906100821"></p><h3 id="MGET"><a href="#MGET" class="headerlink" title="MGET"></a>MGET</h3><p>时间复杂度 O(N)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mget key key2 ...</span><br></pre></td></tr></table></figure><p>返回给定的一个或多个键的值<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906101024.png" alt="20240906101024"></p><h3 id="MSETNX"><a href="#MSETNX" class="headerlink" title="MSETNX"></a>MSETNX</h3><p>时间复杂度 O(N)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msetnx key value [key value ...]</span><br></pre></td></tr></table></figure><p>当所有给定的<code>key</code>都不存在时才同时为多个键设置值<br>只要有一个<code>key</code>已经存在, 那么所有值都不会被继续执行<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906101414.png" alt="20240906101414"></p><h3 id="DEL"><a href="#DEL" class="headerlink" title="DEL"></a>DEL</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del key [key ...]</span><br></pre></td></tr></table></figure><p>删除给定的一个或多个键的值<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906101715.png" alt="20240906101715"></p><h3 id="STRLEN"><a href="#STRLEN" class="headerlink" title="STRLEN"></a>STRLEN</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strlen key</span><br></pre></td></tr></table></figure><p>获取键位<code>key</code>的值的字符串长度<br><img src="https://xiaoweii.oss-cn-beijing.aliyuncs.com/img/20240906101830.png" alt="20240906101830"></p><h2 id="列表-Lists"><a href="#列表-Lists" class="headerlink" title="列表(Lists)"></a>列表(Lists)</h2><h2 id="哈希-Hashes"><a href="#哈希-Hashes" class="headerlink" title="哈希(Hashes)"></a>哈希(Hashes)</h2><h2 id="位图-Bitmaps"><a href="#位图-Bitmaps" class="headerlink" title="位图(Bitmaps)"></a>位图(Bitmaps)</h2><h2 id="位域-BitFields"><a href="#位域-BitFields" class="headerlink" title="位域(BitFields)"></a>位域(BitFields)</h2><h2 id="集合-Sets"><a href="#集合-Sets" class="headerlink" title="集合(Sets)"></a>集合(Sets)</h2><h2 id="有序集合-SortedSets"><a href="#有序集合-SortedSets" class="headerlink" title="有序集合(SortedSets)"></a>有序集合(SortedSets)</h2><h2 id="流-Streams"><a href="#流-Streams" class="headerlink" title="流(Streams)"></a>流(Streams)</h2><h2 id="地理空间-Geospatial"><a href="#地理空间-Geospatial" class="headerlink" title="地理空间(Geospatial)"></a>地理空间(Geospatial)</h2><h2 id="HyperLogLog"><a href="#HyperLogLog" class="headerlink" title="HyperLogLog"></a>HyperLogLog</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这一章简单来了解下 Redis 常见的一些命令, 方便大家学习以及我之后的查阅&lt;/p&gt;
+&lt;h2 id=&quot;mac-下载-Redis&quot;&gt;&lt;a href=&quot;#mac-下载-Redis&quot; class=&quot;headerlink&quot; title=&quot;mac 下载 Redis&quot;&gt;&lt;/a&gt;mac</summary>
+      
+    
+    
+    
+    <category term="Redis" scheme="http://blog.xiaoweii.xyz/categories/Redis/"/>
+    
+    
+    <category term="Redis" scheme="http://blog.xiaoweii.xyz/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库常见索引失效</title>
+    <link href="http://blog.xiaoweii.xyz/2024/09/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88/"/>
+    <id>http://blog.xiaoweii.xyz/2024/09/05/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%B8%B8%E8%A7%81%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88/</id>
+    <published>2024-09-05T12:22:31.000Z</published>
+    <updated>2024-09-05T16:55:31.719Z</updated>
+    
+    <content type="html"><![CDATA[<p>刷视频看到一道题, 当时自以为答得非常好, 结果回旋镖反向击中了我自己.</p><p>题目是这样的SQL用了函数一定会索引失效吗? </p><p>我的答案是不会, 因为如果作用在索引列上, 那么索引列肯定就不管用了, 所以不一定会失效, 我自以为回答的很干练, 但实际上原理好像并非这样</p><h2 id="常见导致索引失效的情况"><a href="#常见导致索引失效的情况" class="headerlink" title="常见导致索引失效的情况"></a>常见导致索引失效的情况</h2><h3 id="对索引列使用函数"><a href="#对索引列使用函数" class="headerlink" title="对索引列使用函数"></a>对索引列使用函数</h3><p>这个也是最好记忆的, 如果在<code>where</code>子句中对索引列应用了函数转换, 那么会导致索引无法使用. 这个原因是因为索引是基于列的原始值而构建的, 函数改变列这些值.</p><p>举个🌰</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users <span class="keyword">where</span> <span class="built_in">lower</span>(username) <span class="operator">=</span> &quot;abc&quot;;</span><br></pre></td></tr></table></figure><p>在这种情况下, 可以考虑在应用层处理大小写不敏感的比较, 或者在数据库中创建一个计算列, 存储计算值并对其建立索引.</p><p>添加辅助列是我经常使用的方法, 而且经常添加好几个辅助列, 真的很好用, 推荐给大家ღ( ´･ᴗ･&#96; )比心</p><h3 id="计算表达式"><a href="#计算表达式" class="headerlink" title="计算表达式"></a>计算表达式</h3><p>使用计算表达式的时候, 如<code>column + 值</code>可能会导致MySQL放弃使用索引</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> orders <span class="keyword">where</span> price <span class="operator">+</span> <span class="number">10</span> <span class="operator">&gt;</span> <span class="number">100</span>;</span><br></pre></td></tr></table></figure><h2 id="不会导致索引失效的情况"><a href="#不会导致索引失效的情况" class="headerlink" title="不会导致索引失效的情况"></a>不会导致索引失效的情况</h2><h3 id="函数在索引范围之外使用"><a href="#函数在索引范围之外使用" class="headerlink" title="函数在索引范围之外使用"></a>函数在索引范围之外使用</h3><p>函数不在索引范围(上边提到的<code>where</code>或者<code>on</code>条件中)使用时, 索引仍然有效.</p><p>常见的有在<code>select</code>, <code>order by</code>, <code>group by</code>等地方使用函数通常不会影响索引的使用</p><h2 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h2><h3 id="辅助列"><a href="#辅助列" class="headerlink" title="辅助列"></a>辅助列</h3><p>如果定期需要函数值, 可以考虑使用生成列来预计算值并索引它</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> users <span class="keyword">add</span> username_lower <span class="type">varchar</span>(<span class="number">255</span>) generated always <span class="keyword">as</span> (<span class="built_in">LOWER</span>(username)) stored, <span class="keyword">add</span> index (username_lower);</span><br></pre></td></tr></table></figure><h3 id="应用层处理"><a href="#应用层处理" class="headerlink" title="应用层处理"></a>应用层处理</h3><p>在应用层而不是数据库中处理某些需要函数的计算或转换</p><h3 id="分析查询计划"><a href="#分析查询计划" class="headerlink" title="分析查询计划"></a>分析查询计划</h3><p>使用<code>explain</code>语句分析和验证查询是否有效利用索引</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;刷视频看到一道题, 当时自以为答得非常好, 结果回旋镖反向击中了我自己.&lt;/p&gt;
+&lt;p&gt;题目是这样的SQL用了函数一定会索引失效吗? &lt;/p&gt;
+&lt;p&gt;我的答案是不会, 因为如果作用在索引列上, 那么索引列肯定就不管用了, 所以不一定会失效, 我自以为回答的很干练, 但实际上</summary>
+      
+    
+    
+    
+    <category term="MySQL数据库" scheme="http://blog.xiaoweii.xyz/categories/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="MySQL" scheme="http://blog.xiaoweii.xyz/tags/MySQL/"/>
+    
+    <category term="数据库优化" scheme="http://blog.xiaoweii.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
+    
+    <category term="数据库" scheme="http://blog.xiaoweii.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="索引" scheme="http://blog.xiaoweii.xyz/tags/%E7%B4%A2%E5%BC%95/"/>
+    
+  </entry>
   
   <entry>
     <title>阿里云服务器上搭建数据库</title>
@@ -37,11 +94,11 @@
     <category term="云服务器搭建数据库" scheme="http://blog.xiaoweii.xyz/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
+    <category term="数据库" scheme="http://blog.xiaoweii.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
     <category term="阿里云" scheme="http://blog.xiaoweii.xyz/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
     
     <category term="云服务器" scheme="http://blog.xiaoweii.xyz/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    <category term="数据库" scheme="http://blog.xiaoweii.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -50,7 +107,7 @@
     <link href="http://blog.xiaoweii.xyz/2024/09/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84like%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96/"/>
     <id>http://blog.xiaoweii.xyz/2024/09/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84like%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96/</id>
     <published>2024-09-03T06:15:21.000Z</published>
-    <updated>2024-09-03T07:00:33.836Z</updated>
+    <updated>2024-09-05T12:23:20.822Z</updated>
     
     <content type="html"><![CDATA[<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在MySQL中, <code>LIKE</code>模糊查询可能会导致性能问题, 使用通配符<code>%</code>开头时, 将不会使用索引进行查询, 因为这会导致全表扫描</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="合理使用索引"><a href="#合理使用索引" class="headerlink" title="合理使用索引"></a>合理使用索引</h3><p><strong>前缀匹配</strong>: 使用 <code>like &#39;prefix%&#39;</code> 的形式, 通配符在开头会影响索引导致全表扫描, 那我们就把他放后边不就好了, 比如</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">&#x27;Abc%&#x27;</span>;</span><br></pre></td></tr></table></figure><p>这样子的话, 如果 <code>username</code> 字段有索引, 前缀匹配就会用到索引</p><h3 id="使用反向索引"><a href="#使用反向索引" class="headerlink" title="使用反向索引"></a>使用反向索引</h3><p>但是有时候确实需要我们使用后缀匹配(即 <code>like &#39;%suffix&#39;</code>), 那么我们就可以创建一个辅助队列存储反转字符串, 并基于辅助队列进行前缀匹配, 这样我们又回到了第一种情况, 就又可以通过索引进行查询</p><ul><li><strong>创建反向字符串</strong>:</li></ul><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> users <span class="keyword">add</span> reversed_username <span class="type">varchar</span>(<span class="number">255</span>);</span><br><span class="line"><span class="keyword">update</span> users <span class="keyword">set</span> reversed_username <span class="operator">=</span> reverse(username);</span><br><span class="line"><span class="keyword">create</span> index idx_reversed_username <span class="keyword">on</span> users(reversed_username);</span><br></pre></td></tr></table></figure><h3 id="限制扫描范围"><a href="#限制扫描范围" class="headerlink" title="限制扫描范围"></a>限制扫描范围</h3><p>在 like 查询中, 如果可以通过其他条件进一步缩小范围, 也可以实现对模糊查询进行优化, 查询时尽量加入这些条件</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> users <span class="keyword">where</span> created_at <span class="operator">&gt;=</span> <span class="string">&#x27;2022-03-01&#x27;</span> <span class="keyword">and</span> username <span class="keyword">like</span> <span class="string">&#x27;Abc%&#x27;</span>;</span><br></pre></td></tr></table></figure><h3 id="使用缓存"><a href="#使用缓存" class="headerlink" title="使用缓存"></a>使用缓存</h3><p>如果对于相同的查询需要频繁执行, 可以考虑在应用层实施缓存策略来减少数据库负载, 这一部分可以去看MyBatis的缓存的章节, MyBatis在这一块做的特别好</p><p>同时也可以借助于像REDIS这样的缓存, 提升查询性能, 前提是这些数据不是经常变化的数据, 我们也可以开启cache去看一下缓存命中率</p><h3 id="借助专业工具"><a href="#借助专业工具" class="headerlink" title="借助专业工具"></a>借助专业工具</h3><p>对于非常大的数据集或者需要复杂文本处理和搜索功能, 可以外部全文搜索引擎 Elasticsearch ,  Solr 或者 Sphinx 来代替MySQL的like操作, 这几个工具我还没怎么使用过, 我操作的数据最多有过几千条, 还是缺乏经验, 碰见的太少了, 抽时间压力测试一下, 找个工具练练.</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过以上这些方法优化 like 查询, 可以显著提升数据库的查询性能, 应根据具体场景选择合适的优化策略. 使用<code>explain</code>分析查询执行计划, 可以帮助确认优化效果</p>]]></content>
     
@@ -62,18 +119,18 @@
     
     
     
-    <category term="MySQl数据库优化" scheme="http://blog.xiaoweii.xyz/categories/MySQl%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
+    <category term="MySQl数据库" scheme="http://blog.xiaoweii.xyz/categories/MySQl%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
+    
+    <category term="MySQL" scheme="http://blog.xiaoweii.xyz/tags/MySQL/"/>
+    
+    <category term="数据库优化" scheme="http://blog.xiaoweii.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
     
     <category term="like" scheme="http://blog.xiaoweii.xyz/tags/like/"/>
     
     <category term="模糊查询" scheme="http://blog.xiaoweii.xyz/tags/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2/"/>
     
-    <category term="MySQL" scheme="http://blog.xiaoweii.xyz/tags/MySQL/"/>
-    
     <category term="mysql" scheme="http://blog.xiaoweii.xyz/tags/mysql/"/>
-    
-    <category term="数据库优化" scheme="http://blog.xiaoweii.xyz/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   
